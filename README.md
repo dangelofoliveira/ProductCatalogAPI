@@ -150,9 +150,9 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 👨‍💻 Autor
 
 **Seu Nome**
-- GitHub: [@seu-usuario](https://github.com/seu-usuario)
-- LinkedIn: [seu-perfil](https://linkedin.com/in/seu-perfil)
-- Email: seu-email@email.com
+- GitHub: [@dangelofoliveira](https://github.com/dangelofoliveira)
+- LinkedIn: [dangelofoliveira](https://linkedin.com/in/dangelofoliveira)
+- Email: dangelofoliveira@gmail.com
 
 ---
 
