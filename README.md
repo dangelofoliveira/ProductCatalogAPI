@@ -149,7 +149,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 👨‍💻 Autor
 
-**Seu Nome**
+**Dângelo**
 - GitHub: [@dangelofoliveira](https://github.com/dangelofoliveira)
 - LinkedIn: [dangelofoliveira](https://linkedin.com/in/dangelofoliveira)
 - Email: dangelofoliveira@gmail.com
