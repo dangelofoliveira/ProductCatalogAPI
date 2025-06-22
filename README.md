@@ -1,13 +1,14 @@
 # 📦 API de Cadastro de Produtos
 
-Uma API REST completa para gerenciamento de produtos com integração a serviços externos, desenvolvida em .NET 8.
+Uma API REST completa para gerenciamento de produtos com integração NCM/CEST para classificação fiscal, desenvolvida em .NET 8.
 
 ## 🚀 Sobre o Projeto
 
 Esta API foi desenvolvida como projeto de portfólio, demonstrando conhecimentos em:
 - **Clean Architecture** com separação de responsabilidades
 - **Entity Framework Core** para persistência de dados
-- **Integração com APIs externas** (IBGE, NCM)
+- **Integração com dados NCM/CEST** para classificação fiscal
+- **PostgreSQL** como banco de dados
 - **Documentação com Swagger**
 - **Padrões de design** (Repository, Dependency Injection)
 - **Validações e tratamento de erros**
@@ -17,7 +18,7 @@ Esta API foi desenvolvida como projeto de portfólio, demonstrando conhecimentos
 - **.NET 8** - Framework principal
 - **ASP.NET Core Web API** - Para criação da API REST
 - **Entity Framework Core** - ORM para acesso a dados
-- **SQL Server** - Banco de dados principal
+- **PostgreSQL** - Banco de dados principal
 - **Swagger/OpenAPI** - Documentação da API
 - **AutoMapper** - Mapeamento entre objetos
 - **FluentValidation** - Validação de dados
@@ -27,15 +28,15 @@ Esta API foi desenvolvida como projeto de portfólio, demonstrando conhecimentos
 ### ✅ Implementadas
 - [ ] CRUD completo de produtos
 - [ ] CRUD de categorias
-- [ ] Validação de dados
+- [ ] Validação de dados com NCM/CEST
 - [ ] Documentação Swagger
 - [ ] Tratamento de erros
 - [ ] Logs estruturados
 
-### 🔄 Integrações Externas
-- [ ] **API IBGE** - Consulta de municípios e estados
-- [ ] **Dados NCM** - Nomenclatura Comum do Mercosul
-- [ ] **CEP** - Validação de endereços (opcional)
+### 🔄 Integrações e Dados
+- [ ] **Dados NCM/CEST** - Classificação fiscal de produtos com MVA
+- [ ] **Validação NCM** - Verificação de códigos NCM válidos
+- [ ] **Enriquecimento de dados** - Preenchimento automático de descrições fiscais
 
 ### 🚧 Próximas Implementações
 - [ ] Autenticação JWT
@@ -64,7 +65,7 @@ ProductCatalogAPI/
 
 ### Pré-requisitos
 - .NET 8 SDK
-- SQL Server (ou SQL Server Express)
+- PostgreSQL
 - Visual Studio 2022 ou VS Code
 
 ### Passos para execução
@@ -114,26 +115,33 @@ https://localhost:7001/swagger
 - `POST /api/categories` - Cria nova categoria
 
 ### Integrações
-- `GET /api/ibge/states` - Lista estados do Brasil
-- `GET /api/ibge/cities/{stateCode}` - Lista cidades por estado
-- `GET /api/ncm/{code}` - Consulta NCM por código
+- `GET /api/ncm/{code}` - Consulta dados NCM por código
+- `GET /api/ncm/search/{term}` - Busca NCM por termo
+- `GET /api/categories` - Lista categorias fiscais disponíveis
 
 ## 🔧 Configuração
 
 ### Variáveis de Ambiente
 ```bash
-ConnectionStrings__DefaultConnection=Server=localhost;Database=ProductCatalogDB;Trusted_Connection=true;
-ExternalAPIs__IBGEBaseUrl=https://servicodados.ibge.gov.br/api/v1/
-ExternalAPIs__NCMBaseUrl=https://portalunico.siscomex.gov.br/
+ConnectionStrings__DefaultConnection=Host=localhost;Database=ProductCatalogDB;Username=postgres;Password=sua-senha
+NcmData__FilePath=Resources/ncm-data.json
 ```
 
 ## 📝 Estrutura do Banco de Dados
 
 ### Produtos
-- Id, Nome, Descrição, Preço, Categoria, NCM, DataCriação, DataAtualizacao
+- Id, Nome, Descrição, Preço, NCM, CEST, MVA, Categoria, DataCriação, DataAtualizacao
 
 ### Categorias  
 - Id, Nome, Descrição, Ativa
+
+## 📊 Dados NCM/CEST
+
+O projeto inclui uma base de dados com códigos NCM (Nomenclatura Comum do Mercosul) e CEST (Código Especificador da Substituição Tributária), incluindo:
+- Códigos NCM oficiais
+- Descrições detalhadas dos produtos
+- Valores de MVA (Margem de Valor Agregado)
+- Categorias fiscais organizadas
 
 ## 🤝 Contribuindo
 
